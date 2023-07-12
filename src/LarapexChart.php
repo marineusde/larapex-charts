@@ -4,6 +4,7 @@ namespace marineusde\LarapexCharts;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
+use marineusde\LarapexCharts\Options\YAxisOption;
 
 class LarapexChart
 {
@@ -43,6 +44,8 @@ class LarapexChart
     public string $theme = 'light';
     public string $sparkline;
     public string $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
+
+    public YAxisOption $yAxisOption;
 
     public array $additionalOptions = [];
 
@@ -225,13 +228,19 @@ class LarapexChart
         return $this;
     }
 
+    public function setYAxisOption(YAxisOption $YAxisOption): static
+    {
+        $this->yAxisOption = $YAxisOption;
+        return $this;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Methods for Views
     |--------------------------------------------------------------------------
     */
 
-    public function transformLabels(array $array): bool|string
+    public function transformLabels(array $array): false|string
     {
         /* @phpstan-ignore-next-line */
         $stringArray = array_filter($array, function ($string) {
@@ -342,6 +351,10 @@ class LarapexChart
 
         if ($this->stroke !== '') {
             $options['stroke'] = json_decode($this->stroke);
+        }
+
+        if ($this->yAxisOption->toArray() !== []) {
+            $options['yaxis'] = $this->yAxisOption->toArray();
         }
 
         return $options;
