@@ -1,19 +1,18 @@
 {
-    "name": "arielmejiadev/larapex-charts",
+    "name": "marineus.de/larapex-charts",
     "description": "Package to provide easy api to build apex charts on Laravel",
     "keywords": [
-        "arielmejiadev",
         "larapex",
         "charts",
         "apexcharts"
     ],
-    "homepage": "https://larapex-charts.netlify.app/",
+    "homepage": "https://github.com/marineusde/larapex-charts",
     "license": "MIT",
     "type": "library",
     "authors": [
         {
-            "name": "ArielMejiaDev",
-            "email": "arielmejiadev@gmail.com"
+            "name": "Henning Zimmermann",
+            "email": "github@marineus.de"
         }
     ],
     "require": {
@@ -28,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "ArielMejiaDev\\LarapexCharts\\": "src"
+            "marineusde\\LarapexCharts\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ArielMejiaDev\\LarapexCharts\\Tests\\": "tests"
+            "marineusde\\LarapexCharts\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -43,10 +42,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ArielMejiaDev\\LarapexCharts\\LarapexChartsServiceProvider"
+                "marineusde\\LarapexCharts\\LarapexChartsServiceProvider"
             ],
             "aliases": {
-                "LarapexChart": "ArielMejiaDev\\LarapexCharts\\Facades\\LarapexChart"
+                "LarapexChart": "marineusde\\LarapexCharts\\Facades\\LarapexChart"
             }
         }
     }
