@@ -11,7 +11,7 @@ class ChartMakeCommand extends GeneratorCommand
 {
     use WithModelStub;
 
-    protected $chartTypes = [
+    protected array $chartTypes = [
         'Pie Chart' => 'PieChart',
         'Donut Chart' => 'DonutChart',
         'Radial Bar Chart' => 'RadialBarChart',
@@ -24,9 +24,9 @@ class ChartMakeCommand extends GeneratorCommand
         'Radar Chart' => 'RadarChart',
     ];
 
-    protected $selectedChart;
+    protected string $selectedChart;
 
-    protected function askChartType()
+    protected function askChartType(): void
     {
         $option = $this->choice(
             'Select a chart type',

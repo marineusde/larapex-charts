@@ -5,3 +5,6 @@ coverage
 .idea
 build
 .vscode
+
+# Ignore phpstan Cache
+/var

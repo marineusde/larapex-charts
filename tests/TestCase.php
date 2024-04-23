@@ -9,10 +9,8 @@ class TestCase extends TestbenchTestCase
 {
     /**
      * Sets the env data to interact as env file values
-     *
-     * @param [type] $app
      */
-    protected function getEnvironmentSetUp($app): void
+    protected function getEnvironmentSetUp(mixed $app): void
     {
         $app['config']->set('database.default', 'testing');
         $app['config']->set('database.connection.testing', [

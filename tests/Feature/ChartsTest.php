@@ -85,7 +85,7 @@ class ChartsTest extends TestCase
                 ]
             ])
             ->setHeight(250)
-            ->setGrid(true)
+            ->setGrid('#F0F0F0')
             ->setStroke(1);
 
         $this->assertEquals($chart->id(), $chart->container()['id']);
@@ -209,7 +209,7 @@ class ChartsTest extends TestCase
         $this->assertEquals($chart->id(), $chart->container()['id']);
         $this->assertEquals($chart, $chart->script()['chart']);
         $this->assertEquals('bar', $chart->type());
-        $chartHorizontalOrientation = json_decode($chart->horizontal(), 1)['horizontal'];
+        $chartHorizontalOrientation = json_decode($chart->horizontal(), true)['horizontal'];
         $this->assertTrue($chartHorizontalOrientation);
     }
 
