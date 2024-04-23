@@ -1,7 +1,7 @@
-<?php namespace ArielMejiaDev\LarapexCharts\Tests\Feature;
+<?php namespace marineusde\LarapexCharts\Tests\Feature;
 
-use ArielMejiaDev\LarapexCharts\LarapexChart;
-use ArielMejiaDev\LarapexCharts\Tests\TestCase;
+use marineusde\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ChartsTest extends TestCase
