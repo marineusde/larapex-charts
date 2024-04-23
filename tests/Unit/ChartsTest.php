@@ -50,16 +50,16 @@ class ChartsTest extends TestCase
             ->setDataset([150, 120])
             ->setLabels([__('Published'), __('No Published')]);
 
-        $this->assertEquals($chart->dataset(), $chart->script()['chart']->dataset());
+        $this->assertEquals($chart->dataset, $chart->script()['chart']->dataset);
     }
 
     /** @test */
     public function it_tests_larapex_charts_can_change_default_config_colors(): void
     {
         $chart = (new LarapexChart)->setTitle('Posts')->setXAxis(['Jan', 'Feb', 'Mar'])->setDataset([150, 120]);
-        $oldColors = $chart->colors();
+        $oldColors = $chart->colors;
         $chart->setColors(['#fe9700', '#607c8a']);
-        $this->assertNotEquals($oldColors, $chart->colors());
+        $this->assertNotEquals($oldColors, $chart->colors);
     }
 
     /** @test */

@@ -3,7 +3,16 @@
 namespace marineusde\LarapexCharts\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use marineusde\LarapexCharts\AreaChart;
+use marineusde\LarapexCharts\BarChart;
+use marineusde\LarapexCharts\DonutChart;
+use marineusde\LarapexCharts\HeatMapChart;
 use marineusde\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\LineChart;
+use marineusde\LarapexCharts\PieChart;
+use marineusde\LarapexCharts\PolarAreaChart;
+use marineusde\LarapexCharts\RadarChart;
+use marineusde\LarapexCharts\RadialChart;
 use marineusde\LarapexCharts\Tests\TestCase;
 
 class ChartsTest extends TestCase
@@ -14,15 +23,15 @@ class ChartsTest extends TestCase
     public function it_tests_larapex_charts_can_render_pie_charts_by_default(): void
     {
         $chart = (new LarapexChart)->setTitle('Users Test Chart');
-        $this->assertEquals('donut', $chart->type());
-        $anotherChart = (new LarapexChart)->areaChart();
-        $this->assertEquals('area', $anotherChart->type());
+        $this->assertEquals('donut', $chart->type);
+        $anotherChart = new AreaChart();
+        $this->assertEquals('area', $anotherChart->type);
     }
 
     /** @test */
     public function it_tests_larapex_charts_can_render_pie_chart(): void
     {
-        $chart = (new LarapexChart)->pieChart()
+        $chart = (new PieChart())
             ->setTitle('Posts')
             ->setSubtitle('From January To March')
             ->setLabels(['Product One', 'Product Two', 'Product Three'])
@@ -30,49 +39,49 @@ class ChartsTest extends TestCase
             ->setDataset([150, 120]);
 
         $this->assertEquals($chart, $chart->script()['chart']);
-        $this->assertEquals('pie', $chart->type());
+        $this->assertEquals('pie', $chart->type);
     }
 
     /** @test */
     public function it_tests_larapex_charts_can_render_donut_chart(): void
     {
-        $chart = (new LarapexChart)->donutChart()
+        $chart = (new DonutChart())
             ->setTitle('Posts')
             ->setXAxis(['Jan', 'Feb', 'Mar'])
             ->setDataset([150, 120]);
 
         $this->assertEquals($chart, $chart->script()['chart']);
-        $this->assertEquals('donut', $chart->type());
+        $this->assertEquals('donut', $chart->type);
     }
 
     /** @test */
     public function it_tests_larapex_can_render_radial_bar_charts(): void
     {
-        $chart = (new LarapexChart)->radialChart()
+        $chart = (new RadialChart())
             ->setTitle('Products with more profit')
             ->setXAxis(['Jan', 'Feb', 'Mar'])
             ->setDataset([60, 40, 79]);
 
         $this->assertEquals($chart, $chart->script()['chart']);
-        $this->assertEquals('radialBar', $chart->type());
+        $this->assertEquals('radialBar', $chart->type);
     }
 
     /** @test */
     public function it_tests_larapex_charts_can_render_polar_chart(): void
     {
-        $chart = (new LarapexChart)->polarAreaChart()
+        $chart = (new PolarAreaChart())
             ->setTitle('Products with more profit')
             ->setXAxis(['Jan', 'Feb', 'Mar'])
             ->setDataset([60, 40, 79]);
 
         $this->assertEquals($chart, $chart->script()['chart']);
-        $this->assertEquals('polarArea', $chart->type());
+        $this->assertEquals('polarArea', $chart->type);
     }
 
     /** @test */
     public function larapex_can_render_line_charts(): void
     {
-        $chart = (new LarapexChart)->lineChart()
+        $chart = (new LineChart())
             ->setTitle('Total Users Monthly')
             ->setSubtitle('From January to March')
             ->setXAxis([
@@ -88,15 +97,15 @@ class ChartsTest extends TestCase
             ->setGrid('#F0F0F0')
             ->setStroke(1);
 
-        $this->assertEquals($chart->id(), $chart->container()['id']);
+        $this->assertEquals($chart->id, $chart->container()['id']);
         $this->assertEquals($chart, $chart->script()['chart']);
-        $this->assertEquals('line', $chart->type());
+        $this->assertEquals('line', $chart->type);
     }
 
     /** @test */
     public function it_tests_larapex_charts_can_create_an_area_chart(): void
     {
-        $chart = (new LarapexChart)->areaChart()
+        $chart = (new AreaChart())
             ->setTitle('Total Users Monthly')
             ->setSubtitle('From January to March')
             ->setXAxis([
@@ -113,15 +122,15 @@ class ChartsTest extends TestCase
                 ]
             ]);
 
-        $this->assertEquals($chart->id(), $chart->container()['id']);
+        $this->assertEquals($chart->id, $chart->container()['id']);
         $this->assertEquals($chart, $chart->script()['chart']);
-        $this->assertEquals('area', $chart->type());
+        $this->assertEquals('area', $chart->type);
     }
 
     /** @test */
     public function it_tests_larapex_charts_can_render_bar_charts(): void
     {
-        $chart = (new LarapexChart)->barChart()
+        $chart = (new BarChart())
             ->setTitle('Net Profit')
             ->setXAxis(['Jan', 'Feb', 'Mar'])
             ->setDataset([
@@ -151,17 +160,17 @@ class ChartsTest extends TestCase
                 ]
             ]);
 
-        $this->assertEquals($chart->id(), $chart->container()['id']);
+        $this->assertEquals($chart->id, $chart->container()['id']);
         $this->assertEquals($chart, $chart->script()['chart']);
-        $this->assertEquals('bar', $chart->type());
+        $this->assertEquals('bar', $chart->type);
     }
 
     /** @test */
     public function it_tests_larapex_charts_can_render_stacked_bar_chart(): void
     {
-        $chart = (new LarapexChart)->barChart()
+        $chart = (new BarChart())
             ->setTitle('Net Profit')
-            ->setStacked(true)
+            ->setStacked()
             ->setXAxis(['Jan', 'Feb', 'Mar'])
             ->setDataset([
                 [
@@ -178,16 +187,16 @@ class ChartsTest extends TestCase
                 ]
             ]);
 
-        $this->assertEquals($chart->id(), $chart->container()['id']);
+        $this->assertEquals($chart->id, $chart->container()['id']);
         $this->assertEquals($chart, $chart->script()['chart']);
-        $this->assertEquals('bar', $chart->type());
-        $this->assertTrue($chart->stacked());
+        $this->assertEquals('bar', $chart->type);
+        $this->assertTrue($chart->stacked);
     }
 
     /** @test */
     public function it_tests_larapex_charts_can_render_horizontal_bar_chart(): void
     {
-        $chart = (new LarapexChart)->barChart()
+        $chart = (new BarChart())
             ->setTitle('Net Profit')
             ->setHorizontal(true)
             ->setXAxis(['Jan', 'Feb', 'Mar'])
@@ -206,17 +215,17 @@ class ChartsTest extends TestCase
                 ]
             ]);
 
-        $this->assertEquals($chart->id(), $chart->container()['id']);
+        $this->assertEquals($chart->id, $chart->container()['id']);
         $this->assertEquals($chart, $chart->script()['chart']);
-        $this->assertEquals('bar', $chart->type());
-        $chartHorizontalOrientation = json_decode($chart->horizontal(), true)['horizontal'];
+        $this->assertEquals('bar', $chart->type);
+        $chartHorizontalOrientation = json_decode($chart->horizontal, true)['horizontal'];
         $this->assertTrue($chartHorizontalOrientation);
     }
 
     /** @test */
     public function it_tests_larapex_charts_can_render_heatmap_chart(): void
     {
-        $chart = (new LarapexChart)->heatMapChart()
+        $chart = (new HeatMapChart())
             ->setTitle('Total Users')
             ->setXAxis([
                 'Jan', 'Feb', 'Mar'
@@ -232,15 +241,15 @@ class ChartsTest extends TestCase
                 ]
             ]);
 
-        $this->assertEquals($chart->id(), $chart->container()['id']);
+        $this->assertEquals($chart->id, $chart->container()['id']);
         $this->assertEquals($chart, $chart->script()['chart']);
-        $this->assertEquals('heatmap', $chart->type());
+        $this->assertEquals('heatmap', $chart->type);
     }
 
     /** @test */
     public function it_tests_larapex_charts_can_render_radar_chart(): void
     {
-        $chart = (new LarapexChart)->radarChart()
+        $chart = (new RadarChart())
             ->setTitle('Total Users')
             ->setXAxis([
                 'Jan', 'Feb', 'Mar'
@@ -256,8 +265,8 @@ class ChartsTest extends TestCase
                 ]
             ]);
 
-        $this->assertEquals($chart->id(), $chart->container()['id']);
+        $this->assertEquals($chart->id, $chart->container()['id']);
         $this->assertEquals($chart, $chart->script()['chart']);
-        $this->assertEquals('radar', $chart->type());
+        $this->assertEquals('radar', $chart->type);
     }
 }
