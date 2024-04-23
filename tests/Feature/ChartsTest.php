@@ -1,8 +1,10 @@
-<?php namespace marineusde\LarapexCharts\Tests\Feature;
+<?php
 
+namespace marineusde\LarapexCharts\Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use marineusde\LarapexCharts\LarapexChart;
 use marineusde\LarapexCharts\Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ChartsTest extends TestCase
 {
@@ -83,7 +85,7 @@ class ChartsTest extends TestCase
                 ]
             ])
             ->setHeight(250)
-            ->setGrid(true)
+            ->setGrid('#F0F0F0')
             ->setStroke(1);
 
         $this->assertEquals($chart->id(), $chart->container()['id']);
@@ -207,7 +209,7 @@ class ChartsTest extends TestCase
         $this->assertEquals($chart->id(), $chart->container()['id']);
         $this->assertEquals($chart, $chart->script()['chart']);
         $this->assertEquals('bar', $chart->type());
-        $chartHorizontalOrientation = json_decode($chart->horizontal(), 1)['horizontal'];
+        $chartHorizontalOrientation = json_decode($chart->horizontal(), true)['horizontal'];
         $this->assertTrue($chartHorizontalOrientation);
     }
 
@@ -234,7 +236,7 @@ class ChartsTest extends TestCase
         $this->assertEquals($chart, $chart->script()['chart']);
         $this->assertEquals('heatmap', $chart->type());
     }
-    
+
     /** @test */
     public function it_tests_larapex_charts_can_render_radar_chart(): void
     {

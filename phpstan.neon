@@ -1,0 +1,12 @@
+includes:
+    - ./vendor/larastan/larastan/extension.neon
+
+parameters:
+    paths:
+        - src
+        - tests
+    tmpDir: var/cache/ecs
+    level: 6
+    inferPrivatePropertyTypeFromConstructor: true
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false

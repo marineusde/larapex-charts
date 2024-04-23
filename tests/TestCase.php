@@ -1,17 +1,16 @@
-<?php namespace marineusde\LarapexCharts\Tests;
+<?php
 
-use Orchestra\Testbench\TestCase as TestbenchTestCase;
+namespace marineusde\LarapexCharts\Tests;
+
 use marineusde\LarapexCharts\LarapexChartsServiceProvider;
+use Orchestra\Testbench\TestCase as TestbenchTestCase;
 
 class TestCase extends TestbenchTestCase
 {
     /**
      * Sets the env data to interact as env file values
-     *
-     * @param [type] $app
-     * @return void
      */
-    protected function getEnvironmentSetUp($app): void
+    protected function getEnvironmentSetUp(mixed $app): void
     {
         $app['config']->set('database.default', 'testing');
         $app['config']->set('database.connection.testing', [
@@ -35,5 +34,4 @@ class TestCase extends TestbenchTestCase
             'LarapexChart' => \marineusde\LarapexCharts\Facades\LarapexChart::class
         ];
     }
-
 }

@@ -1,28 +1,31 @@
 <?php
+
 namespace marineusde\LarapexCharts\Traits;
-trait HasOptions{
-    protected $options;
-        /**
+
+trait HasOptions
+{
+    protected ?array $options = null;
+
+    /**
      * Get the value of options
-     */ 
-    public function getOptions()
+     */
+    public function getOptions(): array
     {
-        return $this->options ? array_merge_recursive($this->getDefaultOption() ,$this->options) : $this->getDefaultOption();
+        return $this->options ? array_merge_recursive($this->getDefaultOption(), $this->options) : $this->getDefaultOption();
     }
 
     /**
      * Set the value of options
-     *
-     * @return  self
-     */ 
-    public function setOptions($options)
+     */
+    public function setOptions(array $options): static
     {
         $this->options = $options;
 
         return $this;
     }
 
-    private function getDefaultOption(){
+    private function getDefaultOption(): array
+    {
         return [
             'chart' => [
                 'type' => $this->type(),
@@ -45,7 +48,7 @@ trait HasOptions{
             'subtitle' => [
                 'text' => $this->subtitle() ? $this->subtitle() : '',
                 'align' => $this->subtitlePosition() ? $this->subtitlePosition() : '',
-            ],            
+            ],
             'xaxis' => [
                 'categories' => json_decode($this->xAxis()),
             ],

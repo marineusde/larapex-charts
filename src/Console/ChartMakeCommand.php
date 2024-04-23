@@ -2,8 +2,8 @@
 
 namespace marineusde\LarapexCharts\Console;
 
-use marineusde\LarapexCharts\Traits\WithModelStub;
 use Illuminate\Console\GeneratorCommand;
+use marineusde\LarapexCharts\Traits\WithModelStub;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -11,7 +11,7 @@ class ChartMakeCommand extends GeneratorCommand
 {
     use WithModelStub;
 
-    protected $chartTypes = [
+    protected array $chartTypes = [
         'Pie Chart' => 'PieChart',
         'Donut Chart' => 'DonutChart',
         'Radial Bar Chart' => 'RadialBarChart',
@@ -24,9 +24,9 @@ class ChartMakeCommand extends GeneratorCommand
         'Radar Chart' => 'RadarChart',
     ];
 
-    protected $selectedChart;
+    protected string $selectedChart;
 
-    protected function askChartType()
+    protected function askChartType(): void
     {
         $option = $this->choice(
             'Select a chart type',
@@ -64,8 +64,6 @@ class ChartMakeCommand extends GeneratorCommand
 
     /**
      * Get the stub file for the generator.
-     *
-     * @return string
      */
     protected function getStub(): string
     {
@@ -89,7 +87,6 @@ class ChartMakeCommand extends GeneratorCommand
      *
      * @param  string  $stub
      * @param  string  $name
-     * @return string
      */
     protected function replaceClass($stub, $name): string
     {
@@ -104,7 +101,6 @@ class ChartMakeCommand extends GeneratorCommand
      * Get the default namespace for the class.
      *
      * @param  string  $rootNamespace
-     * @return string
      */
     protected function getDefaultNamespace($rootNamespace): string
     {
@@ -113,8 +109,6 @@ class ChartMakeCommand extends GeneratorCommand
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
     protected function getArguments(): array
     {
@@ -125,8 +119,6 @@ class ChartMakeCommand extends GeneratorCommand
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
     protected function getOptions(): array
     {

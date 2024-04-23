@@ -1,14 +1,10 @@
 <?php
 
-
 namespace marineusde\LarapexCharts\Traits;
-
-
-use marineusde\LarapexCharts\LarapexChart;
 
 trait SimpleChartDataAggregator
 {
-    public function addData(array $data) :self
+    public function addData(array $data): self
     {
         $this->dataset = json_encode($data);
 

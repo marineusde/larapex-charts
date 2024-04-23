@@ -2,8 +2,7 @@
 
 namespace marineusde\LarapexCharts\Contracts;
 
-
 interface MustAddSimpleData
 {
-    public function addData(array $data);
+    public function addData(array $data): self;
 }
