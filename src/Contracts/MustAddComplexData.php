@@ -1,8 +1,6 @@
 <?php
 
-
 namespace marineusde\LarapexCharts\Contracts;
-
 
 interface MustAddComplexData
 {

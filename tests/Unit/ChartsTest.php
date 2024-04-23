@@ -1,4 +1,6 @@
-<?php namespace marineusde\LarapexCharts\Tests\Unit;
+<?php
+
+namespace marineusde\LarapexCharts\Tests\Unit;
 
 use Illuminate\Support\Facades\Artisan;
 use marineusde\LarapexCharts\LarapexChart;
@@ -63,6 +65,6 @@ class ChartsTest extends TestCase
     /** @test */
     public function it_tests_larapex_chart_cdn_returns_a_correct_url(): void
     {
-        $this->assertEquals('https://cdn.jsdelivr.net/npm/apexcharts' , (new LarapexChart)->cdn());
+        $this->assertEquals('https://cdn.jsdelivr.net/npm/apexcharts', (new LarapexChart)->cdn());
     }
 }

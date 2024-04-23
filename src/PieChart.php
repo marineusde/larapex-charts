@@ -2,7 +2,6 @@
 
 namespace marineusde\LarapexCharts;
 
-
 use marineusde\LarapexCharts\Contracts\MustAddSimpleData;
 use marineusde\LarapexCharts\Traits\SimpleChartDataAggregator;
 
@@ -16,7 +15,7 @@ class PieChart extends LarapexChart implements MustAddSimpleData
         $this->type = 'pie';
     }
 
-    public function addPieces(array $data) :PieChart
+    public function addPieces(array $data): PieChart
     {
         $this->addData($data);
         return $this;

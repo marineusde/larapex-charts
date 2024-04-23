@@ -1,5 +1,5 @@
 {
-    "name": "marineus.de/larapex-charts",
+    "name": "marineusde/larapex-charts",
     "description": "Package to provide easy api to build apex charts on Laravel",
     "keywords": [
         "larapex",
@@ -23,7 +23,8 @@
     "require-dev": {
         "orchestra/testbench": "^8.10",
         "phpunit/phpunit": "^10.5",
-        "nunomaduro/collision": "^7.10"
+        "nunomaduro/collision": "^7.10",
+        "laravel/pint": "^1.15"
     },
     "autoload": {
         "psr-4": {
@@ -37,7 +38,10 @@
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "pint-test": "./vendor/bin/pint --test",
+        "pint-show": "./vendor/bin/pint -v",
+        "pint-fix": "./vendor/bin/pint"
     },
     "extra": {
         "laravel": {
