@@ -48,7 +48,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "marineusde\\LarapexCharts\\LarapexChartsServiceProvider"
+                "marineusde\\LarapexCharts\\Providers\\LarapexChartsServiceProvider"
             ],
             "aliases": {
                 "LarapexChart": "marineusde\\LarapexCharts\\Facades\\LarapexChart"
