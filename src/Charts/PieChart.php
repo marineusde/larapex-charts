@@ -1,21 +1,22 @@
 <?php
 
-namespace marineusde\LarapexCharts;
+namespace marineusde\LarapexCharts\Charts;
 
 use marineusde\LarapexCharts\Contracts\MustAddSimpleData;
+use marineusde\LarapexCharts\LarapexChart;
 use marineusde\LarapexCharts\Traits\SimpleChartDataAggregator;
 
-class RadialChart extends LarapexChart implements MustAddSimpleData
+class PieChart extends LarapexChart implements MustAddSimpleData
 {
     use SimpleChartDataAggregator;
 
     public function __construct()
     {
         parent::__construct();
-        $this->type = 'radialBar';
+        $this->type = 'pie';
     }
 
-    public function addRings(array $data): RadialChart
+    public function addPieces(array $data): PieChart
     {
         $this->addData($data);
         return $this;

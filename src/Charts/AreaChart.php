@@ -1,22 +1,22 @@
 <?php
 
-namespace marineusde\LarapexCharts;
+namespace marineusde\LarapexCharts\Charts;
 
 use marineusde\LarapexCharts\Contracts\MustAddComplexData;
+use marineusde\LarapexCharts\LarapexChart;
 use marineusde\LarapexCharts\Traits\ComplexChartDataAggregator;
 
-class HorizontalBar extends LarapexChart implements MustAddComplexData
+class AreaChart extends LarapexChart implements MustAddComplexData
 {
     use ComplexChartDataAggregator;
 
     public function __construct()
     {
         parent::__construct();
-        $this->type = 'bar';
-        $this->horizontal = json_encode(['horizontal' => true]);
+        $this->type = 'area';
     }
 
-    public function addBar(string $name, array $data): HorizontalBar
+    public function addArea(string $name, array $data): AreaChart
     {
         return $this->addData($name, $data);
     }

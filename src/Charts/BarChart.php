@@ -1,21 +1,22 @@
 <?php
 
-namespace marineusde\LarapexCharts;
+namespace marineusde\LarapexCharts\Charts;
 
 use marineusde\LarapexCharts\Contracts\MustAddComplexData;
+use marineusde\LarapexCharts\LarapexChart;
 use marineusde\LarapexCharts\Traits\ComplexChartDataAggregator;
 
-class LineChart extends LarapexChart implements MustAddComplexData
+class BarChart extends LarapexChart implements MustAddComplexData
 {
     use ComplexChartDataAggregator;
 
     public function __construct()
     {
         parent::__construct();
-        $this->type = 'line';
+        $this->type = 'bar';
     }
 
-    public function addLine(string $name, array $data): LineChart
+    public function addBar(string $name, array $data): BarChart
     {
         return $this->addData($name, $data);
     }
