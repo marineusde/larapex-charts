@@ -41,4 +41,13 @@ class YAxisOptionTest extends TestCase
         $this->assertSame(10, $yAxis['max']);
         $this->assertSame(10, $yAxis['tickAmount']);
     }
+
+    public function test_not_set(): void
+    {
+        $chart = (new BarChart);
+
+        $options = $chart->getDefaultOptions();
+
+        $this->assertNull($options['chart']['animations'] ?? null);
+    }
 }
