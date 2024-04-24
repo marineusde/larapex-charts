@@ -45,7 +45,7 @@ class LarapexChart
     public string $sparkline;
     public string $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
 
-    public YAxisOption $yAxisOption;
+    public ?YAxisOption $yAxisOption = null;
 
     public array $additionalOptions = [];
 
@@ -353,7 +353,7 @@ class LarapexChart
             $options['stroke'] = json_decode($this->stroke);
         }
 
-        if ($this->yAxisOption->toArray() !== []) {
+        if ($this->yAxisOption !== null && $this->yAxisOption->toArray() !== []) {
             $options['yaxis'] = $this->yAxisOption->toArray();
         }
 
