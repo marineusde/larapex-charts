@@ -1,8 +1,9 @@
 <?php
 
-namespace marineusde\LarapexCharts;
+namespace marineusde\LarapexCharts\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use marineusde\LarapexCharts\LarapexChart;
 
 class LarapexChartsServiceProvider extends ServiceProvider
 {
@@ -58,6 +59,6 @@ class LarapexChartsServiceProvider extends ServiceProvider
 
     public function packageBasePath(string $path = ''): string
     {
-        return __DIR__ . '/../' . $path;
+        return __DIR__ . '/../../' . $path;
     }
 }
