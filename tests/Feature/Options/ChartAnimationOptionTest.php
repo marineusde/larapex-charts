@@ -6,7 +6,6 @@ use marineusde\LarapexCharts\Charts\BarChart;
 use marineusde\LarapexCharts\Enums\ChartAnimationOptionEasing;
 use marineusde\LarapexCharts\LarapexChart;
 use marineusde\LarapexCharts\Options\ChartAnimationOption;
-use marineusde\LarapexCharts\Options\YAxisOption;
 use marineusde\LarapexCharts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -44,7 +43,7 @@ class ChartAnimationOptionTest extends TestCase
 
     public function test_set_all_data(): void
     {
-        $option = (new ChartAnimationOption())
+        $option = (new ChartAnimationOption)
             ->setEasing(ChartAnimationOptionEasing::EASEOUT)
             ->setSpeed(500)
             ->setAnimateGradually(false, 400)
@@ -82,7 +81,7 @@ class ChartAnimationOptionTest extends TestCase
     #[DataProvider('validOptionEasings')]
     public function test_easings(mixed $easing, string $expectedEasingValue): void
     {
-        $option = (new ChartAnimationOption())
+        $option = (new ChartAnimationOption)
             ->setEasing($easing);
 
         $chart = (new BarChart)
