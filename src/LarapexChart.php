@@ -74,74 +74,74 @@ class LarapexChart
     |--------------------------------------------------------------------------
     */
 
-    public function setFontFamily(string $fontFamily): self
+    public function setFontFamily(string $fontFamily): static
     {
         $this->fontFamily = $fontFamily;
         return $this;
     }
 
-    public function setFontColor(string $fontColor): self
+    public function setFontColor(string $fontColor): static
     {
         $this->foreColor = $fontColor;
         return $this;
     }
 
-    public function setDataset(array $dataset): self
+    public function setDataset(array $dataset): static
     {
         $this->dataset = json_encode($dataset);
         return $this;
     }
 
-    public function setHeight(int $height): self
+    public function setHeight(int $height): static
     {
         $this->height = $height;
         return $this;
     }
 
-    public function setWidth(int $width): self
+    public function setWidth(int $width): static
     {
         $this->width = $width;
         return $this;
     }
 
-    public function setColors(array $colors): self
+    public function setColors(array $colors): static
     {
         $this->colors = json_encode($colors);
         return $this;
     }
 
-    public function setHorizontal(bool $horizontal): self
+    public function setHorizontal(bool $horizontal): static
     {
         $this->horizontal = json_encode(['horizontal' => $horizontal]);
         return $this;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(string $title): static
     {
         $this->title = $title;
         return $this;
     }
 
-    public function setSubtitle(string $subtitle, string $position = 'left'): self
+    public function setSubtitle(string $subtitle, string $position = 'left'): static
     {
         $this->subtitle = $subtitle;
         $this->subtitlePosition = $position;
         return $this;
     }
 
-    public function setLabels(array $labels): self
+    public function setLabels(array $labels): static
     {
         $this->labels = $labels;
         return $this;
     }
 
-    public function setXAxis(array $categories): self
+    public function setXAxis(array $categories): static
     {
         $this->xAxis = json_encode($categories);
         return $this;
     }
 
-    public function setGrid(string $color = '#e5e5e5', float $opacity = 0.1): self
+    public function setGrid(string $color = '#e5e5e5', float $opacity = 0.1): static
     {
         $this->grid = json_encode([
             'show' => true,
@@ -154,7 +154,7 @@ class LarapexChart
         return $this;
     }
 
-    public function setMarkers(array $colors = [], float $width = 4, float $hoverSize = 7): self
+    public function setMarkers(array $colors = [], float $width = 4, float $hoverSize = 7): static
     {
         if (empty($colors)) {
             $colors = config('larapex-charts.colors');
@@ -173,7 +173,7 @@ class LarapexChart
         return $this;
     }
 
-    public function setStroke(int $width, array $colors = [], string $curve = 'straight'): self
+    public function setStroke(int $width, array $colors = [], string $curve = 'straight'): static
     {
         if (empty($colors)) {
             $colors = config('larapex-charts.colors');
@@ -188,38 +188,38 @@ class LarapexChart
         return $this;
     }
 
-    public function setToolbar(bool $show, bool $zoom = true): self
+    public function setToolbar(bool $show, bool $zoom = true): static
     {
         $this->toolbar = json_encode(['show' => $show]);
         $this->zoom = json_encode(['enabled' => $zoom]);
         return $this;
     }
 
-    public function setDataLabels(bool $enabled = true): self
+    public function setDataLabels(bool $enabled = true): static
     {
         $this->dataLabels = json_encode(['enabled' => $enabled]);
         return $this;
     }
 
-    public function setTheme(string $theme): self
+    public function setTheme(string $theme): static
     {
         $this->theme = $theme;
         return $this;
     }
 
-    public function setSparkline(bool $enabled = true): self
+    public function setSparkline(bool $enabled = true): static
     {
         $this->sparkline = json_encode(['enabled' => $enabled]);
         return $this;
     }
 
-    public function setStacked(bool $stacked = true): self
+    public function setStacked(bool $stacked = true): static
     {
         $this->stacked = $stacked;
         return $this;
     }
 
-    public function setShowLegend(bool $showLegend = true): self
+    public function setShowLegend(bool $showLegend = true): static
     {
         $this->showLegend = $showLegend;
         return $this;

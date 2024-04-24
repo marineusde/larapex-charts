@@ -4,7 +4,7 @@ namespace marineusde\LarapexCharts\Traits;
 
 trait ComplexChartDataAggregator
 {
-    public function addData(string $name, array $data): self
+    public function addData(string $name, array $data): static
     {
         $dataset = json_decode($this->dataset);
 
