@@ -54,14 +54,14 @@ class ChartAnimationOption implements Arrayable
             'enabled' => $this->enabled,
             'easing' => $this->easing->value,
             'speed' => $this->speed,
-            'animateGradually' => array(
+            'animateGradually' => [
                 'enabled' => $this->animateGraduallyEnabled,
                 'delay' => $this->animateGraduallyDelay
-            ),
-            'dynamicAnimation' => array(
+            ],
+            'dynamicAnimation' => [
                 'enabled' => $this->dynamicAnimationEnabled,
                 'speed' => $this->dynamicAnimationSpeed
-            )
+            ]
         ];
     }
 }
