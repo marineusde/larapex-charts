@@ -69,7 +69,7 @@ Then in your view (Blade file) add:
 ### More complex example
 
 ```php
-$chart = (new LarapexChart)->setType('area')
+$chart = (new AreaChart)
         ->setTitle('Total Users Monthly')
         ->setSubtitle('From January to March')
         ->setXAxis([

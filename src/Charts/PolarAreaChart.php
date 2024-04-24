@@ -1,8 +1,9 @@
 <?php
 
-namespace marineusde\LarapexCharts;
+namespace marineusde\LarapexCharts\Charts;
 
 use marineusde\LarapexCharts\Contracts\MustAddSimpleData;
+use marineusde\LarapexCharts\LarapexChart;
 use marineusde\LarapexCharts\Traits\SimpleChartDataAggregator;
 
 class PolarAreaChart extends LarapexChart implements MustAddSimpleData

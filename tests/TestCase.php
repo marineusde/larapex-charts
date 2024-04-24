@@ -2,7 +2,7 @@
 
 namespace marineusde\LarapexCharts\Tests;
 
-use marineusde\LarapexCharts\LarapexChartsServiceProvider;
+use marineusde\LarapexCharts\Providers\LarapexChartsServiceProvider;
 use Orchestra\Testbench\TestCase as TestbenchTestCase;
 
 class TestCase extends TestbenchTestCase
