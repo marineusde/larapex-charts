@@ -2,20 +2,13 @@
 
 namespace {{ namespace }};
 
-use marineusde\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\Charts\LineChart AS OriginalLineChart;
 
 class {{ class }}
 {
-    protected $chart;
-
-    public function __construct(LarapexChart $chart)
-    {
-        $this->chart = $chart;
-    }
-
     public function build(): array
     {
-        return $this->chart->lineChart()
+        return (new OriginalLineChart)
             ->setTitle('Sales during 2021.')
             ->setSubtitle('Physical sales vs Digital sales.')
             ->addData('Physical sales', [40, 93, 35, 42, 18, 82])

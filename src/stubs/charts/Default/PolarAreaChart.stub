@@ -2,21 +2,13 @@
 
 namespace {{ namespace }};
 
-use marineusde\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\Charts\PolarAreaChart AS OriginalPolarAreaChart;
 
 class {{ class }}
 {
-    protected $chart;
-
-    public function __construct(LarapexChart $chart)
+    public function build(): OriginalPolarAreaChart
     {
-        $this->chart = $chart;
-    }
-
-    public function build(): \marineusde\LarapexCharts\PolarAreaChart
-    {
-        return $this->chart
-            ->polarAreaChart()
+        return (new OriginalPolarAreaChart)
             ->setTitle('Top 3 scorers of the team.')
             ->setSubtitle('Season 2021.')
             ->addData([20, 24, 30])

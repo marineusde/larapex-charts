@@ -2,20 +2,14 @@
 
 namespace {{ namespace }};
 
-use marineusde\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\Charts\RadialBarChart AS OriginalRadialBarChart;
+use Illuminate\Http\JsonResponse;
 
 class {{ class }}
 {
-    protected $chart;
-
-    public function __construct(LarapexChart $chart)
+    public function build(): JsonResponse
     {
-        $this->chart = $chart;
-    }
-
-    public function build(): \Illuminate\Http\JsonResponse
-    {
-        return $this->chart->radialChart()
+        return (new OriginalRadialBarChart)
             ->setTitle('Passing effectiveness.')
             ->setSubtitle('Barcelona city vs Madrid sports.')
             ->addData([75, 60])

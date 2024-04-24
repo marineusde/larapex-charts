@@ -2,20 +2,13 @@
 
 namespace {{ namespace }};
 
-use marineusde\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\Charts\HeatMapChart AS OriginalHeatMapChart;
 
 class {{ class }}
 {
-    protected $chart;
-
-    public function __construct(LarapexChart $chart)
-    {
-        $this->chart = $chart;
-    }
-
     public function build(): array
     {
-        return $this->chart->heatMapChart()
+        return (new OriginalHeatMapChart)
             ->setTitle('Basic radar chart')
             ->addData('Sales', [80, 50, 30, 40, 100, 20])
             ->addHeat('Income', [70, 10, 80, 20, 60, 40])

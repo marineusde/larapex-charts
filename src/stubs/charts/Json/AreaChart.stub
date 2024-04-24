@@ -2,20 +2,14 @@
 
 namespace {{ namespace }};
 
-use marineusde\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\Charts\AreaChart AS OriginalAreaChart;
+use Illuminate\Http\JsonResponse;
 
 class {{ class }}
 {
-    protected $chart;
-
-    public function __construct(LarapexChart $chart)
+    public function build(): JsonResponse
     {
-        $this->chart = $chart;
-    }
-
-    public function build(): \Illuminate\Http\JsonResponse
-    {
-        return $this->chart->areaChart()
+        return (new OriginalAreaChart)
             ->setTitle('Sales during 2021.')
             ->setSubtitle('Physical sales vs Digital sales.')
             ->addData('Physical sales', [40, 93, 35, 42, 18, 82])

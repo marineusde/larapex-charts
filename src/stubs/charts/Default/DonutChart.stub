@@ -2,20 +2,13 @@
 
 namespace {{ namespace }};
 
-use marineusde\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\Charts\DonutChart AS OriginalDonutChart;
 
 class {{ class }}
 {
-    protected $chart;
-
-    public function __construct(LarapexChart $chart)
+    public function build(): OriginalDonutChart
     {
-        $this->chart = $chart;
-    }
-
-    public function build(): \marineusde\LarapexCharts\DonutChart
-    {
-        return $this->chart->donutChart()
+        return (new OriginalDonutChart)
             ->setTitle('Top 3 scorers of the team.')
             ->setSubtitle('Season 2021.')
             ->addData([20, 24, 30])
