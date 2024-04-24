@@ -4,6 +4,7 @@ namespace marineusde\LarapexCharts;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
+use marineusde\LarapexCharts\Options\ChartAnimationOption;
 use marineusde\LarapexCharts\Options\YAxisOption;
 
 class LarapexChart
@@ -46,6 +47,7 @@ class LarapexChart
     public string $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
 
     public ?YAxisOption $yAxisOption = null;
+    public ?ChartAnimationOption $chartAnimationOption = null;
 
     public array $additionalOptions = [];
 
@@ -228,6 +230,12 @@ class LarapexChart
         return $this;
     }
 
+    public function setChartAnimationOption(ChartAnimationOption $chartAnimationOption): static
+    {
+        $this->chartAnimationOption = $chartAnimationOption;
+        return $this;
+    }
+
     public function setYAxisOption(YAxisOption $YAxisOption): static
     {
         $this->yAxisOption = $YAxisOption;
@@ -355,6 +363,10 @@ class LarapexChart
 
         if ($this->yAxisOption !== null && $this->yAxisOption->toArray() !== []) {
             $options['yaxis'] = $this->yAxisOption->toArray();
+        }
+
+        if ($this->chartAnimationOption !== null) {
+            $options['chart']['animations'] = $this->chartAnimationOption->toArray();
         }
 
         return $options;
