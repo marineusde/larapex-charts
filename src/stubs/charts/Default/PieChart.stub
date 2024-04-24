@@ -2,20 +2,13 @@
 
 namespace {{ namespace }};
 
-use marineusde\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\Charts\PieChart AS OriginalPieChart;
 
 class {{ class }}
 {
-    protected $chart;
-
-    public function __construct(LarapexChart $chart)
+    public function build(): OriginalPieChart
     {
-        $this->chart = $chart;
-    }
-
-    public function build(): \marineusde\LarapexCharts\PieChart
-    {
-        return $this->chart->pieChart()
+        return (new OriginalPieChart)
             ->setTitle('Top 3 scorers of the team.')
             ->setSubtitle('Season 2021.')
             ->addData([40, 50, 30])

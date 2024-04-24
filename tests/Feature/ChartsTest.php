@@ -7,11 +7,12 @@ use marineusde\LarapexCharts\Charts\AreaChart;
 use marineusde\LarapexCharts\Charts\BarChart;
 use marineusde\LarapexCharts\Charts\DonutChart;
 use marineusde\LarapexCharts\Charts\HeatMapChart;
+use marineusde\LarapexCharts\Charts\HorizontalBarChart;
 use marineusde\LarapexCharts\Charts\LineChart;
 use marineusde\LarapexCharts\Charts\PieChart;
 use marineusde\LarapexCharts\Charts\PolarAreaChart;
 use marineusde\LarapexCharts\Charts\RadarChart;
-use marineusde\LarapexCharts\Charts\RadialChart;
+use marineusde\LarapexCharts\Charts\RadialBarChart;
 use marineusde\LarapexCharts\LarapexChart;
 use marineusde\LarapexCharts\Tests\TestCase;
 
@@ -57,7 +58,7 @@ class ChartsTest extends TestCase
     /** @test */
     public function it_tests_larapex_can_render_radial_bar_charts(): void
     {
-        $chart = (new RadialChart)
+        $chart = (new RadialBarChart)
             ->setTitle('Products with more profit')
             ->setXAxis(['Jan', 'Feb', 'Mar'])
             ->setDataset([60, 40, 79]);
@@ -196,7 +197,7 @@ class ChartsTest extends TestCase
     /** @test */
     public function it_tests_larapex_charts_can_render_horizontal_bar_chart(): void
     {
-        $chart = (new BarChart)
+        $chart = (new HorizontalBarChart)
             ->setTitle('Net Profit')
             ->setHorizontal(true)
             ->setXAxis(['Jan', 'Feb', 'Mar'])

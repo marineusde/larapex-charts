@@ -2,20 +2,13 @@
 
 namespace {{ namespace }};
 
-use marineusde\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\Charts\RadialBarChart AS OriginalRadialBarChart;
 
 class {{ class }}
 {
-    protected $chart;
-
-    public function __construct(LarapexChart $chart)
-    {
-        $this->chart = $chart;
-    }
-
     public function build(): array
     {
-        return $this->chart->radialChart()
+        return (new OriginalRadialBarChart)
             ->setTitle('Passing effectiveness.')
             ->setSubtitle('Barcelona city vs Madrid sports.')
             ->addData([75, 60])

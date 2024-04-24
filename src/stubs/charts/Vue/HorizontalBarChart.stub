@@ -2,20 +2,13 @@
 
 namespace {{ namespace }};
 
-use marineusde\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\Charts\HorizontalBarChart AS OriginalHorizontalBarChart;
 
 class {{ class }}
 {
-    protected $chart;
-
-    public function __construct(LarapexChart $chart)
-    {
-        $this->chart = $chart;
-    }
-
     public function build(): array
     {
-        return $this->chart->horizontalBarChart()
+        return (new OriginalHorizontalBarChart)
             ->setTitle('Los Angeles vs Miami.')
             ->setSubtitle('Wins during season 2021.')
             ->setColors(['#FFC107', '#D32F2F'])

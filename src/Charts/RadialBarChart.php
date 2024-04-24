@@ -6,7 +6,7 @@ use marineusde\LarapexCharts\Contracts\MustAddSimpleData;
 use marineusde\LarapexCharts\LarapexChart;
 use marineusde\LarapexCharts\Traits\SimpleChartDataAggregator;
 
-class RadialChart extends LarapexChart implements MustAddSimpleData
+class RadialBarChart extends LarapexChart implements MustAddSimpleData
 {
     use SimpleChartDataAggregator;
 
@@ -16,7 +16,7 @@ class RadialChart extends LarapexChart implements MustAddSimpleData
         $this->type = 'radialBar';
     }
 
-    public function addRings(array $data): RadialChart
+    public function addRings(array $data): RadialBarChart
     {
         $this->addData($data);
         return $this;
