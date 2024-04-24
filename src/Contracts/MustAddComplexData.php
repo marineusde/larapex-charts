@@ -4,5 +4,5 @@ namespace marineusde\LarapexCharts\Contracts;
 
 interface MustAddComplexData
 {
-    public function addData(string $name, array $data): self;
+    public function addData(string $name, array $data): static;
 }
