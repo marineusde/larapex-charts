@@ -242,6 +242,12 @@ class LarapexChart
         return $this;
     }
 
+    public function setAdditionalOptions(array $options): static
+    {
+        $this->additionalOptions = $options;
+        return $this;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Methods for Views
