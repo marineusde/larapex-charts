@@ -22,7 +22,7 @@ class YAxisOption implements Arrayable
     public function toArray(): array
     {
         return [
-            'show' => $this->show ? 'true' : 'false',
+            'show' => $this->show,
             'min' => $this->min,
             'max' => $this->max,
             'tickAmount' => $this->tickAmount
