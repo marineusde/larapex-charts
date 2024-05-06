@@ -25,7 +25,8 @@ class YAxisOption implements Arrayable
             'show' => $this->show ? 'true' : 'false',
             'min' => $this->min,
             'max' => $this->max,
-            'tickAmount' => $this->tickAmount
+            'tickAmount' => $this->tickAmount,
+            'show' => $this->show
         ];
     }
 }
