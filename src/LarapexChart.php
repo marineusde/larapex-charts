@@ -316,7 +316,7 @@ class LarapexChart
 
     public function getAdditionalOptions(): array
     {
-        return array_merge_recursive($this->getDefaultOptions(), $this->additionalOptions);
+        return array_replace_recursive($this->getDefaultOptions(), $this->additionalOptions);
     }
 
     public function getDefaultOptions(): array
