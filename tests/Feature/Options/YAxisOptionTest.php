@@ -19,7 +19,7 @@ class YAxisOptionTest extends TestCase
 
         $yAxis = $options['yaxis'];
 
-        $this->assertSame('true', $yAxis['show']);
+        $this->assertSame(true, $yAxis['show']);
         $this->assertSame(0, $yAxis['min']);
         $this->assertSame(10, $yAxis['max']);
         $this->assertSame(1, $yAxis['tickAmount']);
@@ -36,7 +36,7 @@ class YAxisOptionTest extends TestCase
 
         $yAxis = $options['yaxis'];
 
-        $this->assertSame('true', $yAxis['show']);
+        $this->assertSame(true, $yAxis['show']);
         $this->assertSame(0, $yAxis['min']);
         $this->assertSame(10, $yAxis['max']);
         $this->assertSame(10, $yAxis['tickAmount']);
