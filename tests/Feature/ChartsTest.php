@@ -14,6 +14,7 @@ use marineusde\LarapexCharts\Charts\PolarAreaChart;
 use marineusde\LarapexCharts\Charts\RadarChart;
 use marineusde\LarapexCharts\Charts\RadialBarChart;
 use marineusde\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\Options\XAxisOption;
 use marineusde\LarapexCharts\Tests\TestCase;
 
 class ChartsTest extends TestCase
@@ -36,7 +37,7 @@ class ChartsTest extends TestCase
             ->setTitle('Posts')
             ->setSubtitle('From January To March')
             ->setLabels(['Product One', 'Product Two', 'Product Three'])
-            ->setXAxis(['Jan', 'Feb', 'Mar'])
+            ->setXAxisOption(new XAxisOption(['Jan', 'Feb', 'Mar']))
             ->setDataset([150, 120]);
 
         $this->assertEquals($chart, $chart->script()['chart']);
@@ -48,7 +49,7 @@ class ChartsTest extends TestCase
     {
         $chart = (new DonutChart)
             ->setTitle('Posts')
-            ->setXAxis(['Jan', 'Feb', 'Mar'])
+            ->setXAxisOption(new XAxisOption(['Jan', 'Feb', 'Mar']))
             ->setDataset([150, 120]);
 
         $this->assertEquals($chart, $chart->script()['chart']);
@@ -60,7 +61,7 @@ class ChartsTest extends TestCase
     {
         $chart = (new RadialBarChart)
             ->setTitle('Products with more profit')
-            ->setXAxis(['Jan', 'Feb', 'Mar'])
+            ->setXAxisOption(new XAxisOption(['Jan', 'Feb', 'Mar']))
             ->setDataset([60, 40, 79]);
 
         $this->assertEquals($chart, $chart->script()['chart']);
@@ -72,7 +73,7 @@ class ChartsTest extends TestCase
     {
         $chart = (new PolarAreaChart)
             ->setTitle('Products with more profit')
-            ->setXAxis(['Jan', 'Feb', 'Mar'])
+            ->setXAxisOption(new XAxisOption(['Jan', 'Feb', 'Mar']))
             ->setDataset([60, 40, 79]);
 
         $this->assertEquals($chart, $chart->script()['chart']);
@@ -85,9 +86,7 @@ class ChartsTest extends TestCase
         $chart = (new LineChart)
             ->setTitle('Total Users Monthly')
             ->setSubtitle('From January to March')
-            ->setXAxis([
-                'Jan', 'Feb', 'Mar'
-            ])
+            ->setXAxisOption(new XAxisOption(['Jan', 'Feb', 'Mar']))
             ->setDataset([
                 [
                     'name'  =>  'Active Users',
@@ -108,9 +107,7 @@ class ChartsTest extends TestCase
         $chart = (new AreaChart)
             ->setTitle('Total Users Monthly')
             ->setSubtitle('From January to March')
-            ->setXAxis([
-                'Jan', 'Feb', 'Mar'
-            ])
+            ->setXAxisOption(new XAxisOption(['Jan', 'Feb', 'Mar']))
             ->setDataset([
                 [
                     'name'  =>  'Active Users',
@@ -132,7 +129,7 @@ class ChartsTest extends TestCase
     {
         $chart = (new BarChart)
             ->setTitle('Net Profit')
-            ->setXAxis(['Jan', 'Feb', 'Mar'])
+            ->setXAxisOption(new XAxisOption(['Jan', 'Feb', 'Mar']))
             ->setDataset([
                 [
                     'name'  => 'Company A',
@@ -171,7 +168,7 @@ class ChartsTest extends TestCase
         $chart = (new BarChart)
             ->setTitle('Net Profit')
             ->setStacked()
-            ->setXAxis(['Jan', 'Feb', 'Mar'])
+            ->setXAxisOption(new XAxisOption(['Jan', 'Feb', 'Mar']))
             ->setDataset([
                 [
                     'name' => 'Company A',
@@ -199,7 +196,7 @@ class ChartsTest extends TestCase
         $chart = (new HorizontalBarChart)
             ->setTitle('Net Profit')
             ->setHorizontal(true)
-            ->setXAxis(['Jan', 'Feb', 'Mar'])
+            ->setXAxisOption(new XAxisOption(['Jan', 'Feb', 'Mar']))
             ->setDataset([
                 [
                     'name'  => 'Company A',
@@ -227,9 +224,7 @@ class ChartsTest extends TestCase
     {
         $chart = (new HeatMapChart)
             ->setTitle('Total Users')
-            ->setXAxis([
-                'Jan', 'Feb', 'Mar'
-            ])
+            ->setXAxisOption(new XAxisOption(['Jan', 'Feb', 'Mar']))
             ->setDataset([
                 [
                     'name'  =>  'Users of Basic Plan',
@@ -251,9 +246,7 @@ class ChartsTest extends TestCase
     {
         $chart = (new RadarChart)
             ->setTitle('Total Users')
-            ->setXAxis([
-                'Jan', 'Feb', 'Mar'
-            ])
+            ->setXAxisOption(new XAxisOption(['Jan', 'Feb', 'Mar']))
             ->setDataset([
                 [
                     'name'  =>  'Users of Basic Plan',

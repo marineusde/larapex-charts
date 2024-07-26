@@ -6,6 +6,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use marineusde\LarapexCharts\Options\ChartAnimationOption;
 use marineusde\LarapexCharts\Options\GridOption;
+use marineusde\LarapexCharts\Options\XAxisOption;
 use marineusde\LarapexCharts\Options\YAxisOption;
 
 class LarapexChart
@@ -46,6 +47,7 @@ class LarapexChart
     public string $sparkline;
     public string $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
 
+    public ?XAxisOption $xAxisOption = null;
     public ?YAxisOption $yAxisOption = null;
     public ?ChartAnimationOption $chartAnimationOption = null;
     protected ?GridOption $gridOption = null;
@@ -63,7 +65,6 @@ class LarapexChart
         $this->id = substr(str_shuffle(str_repeat($x = $this->chartLetters, (int) ceil(25 / strlen($x)))), 1, 25);
         $this->horizontal = json_encode(['horizontal' => false]);
         $this->colors = json_encode(config('larapex-charts.colors'));
-        $this->setXAxis([]);
         $this->markers = json_encode(['show' => false]);
         $this->toolbar = json_encode(['show' => false]);
         $this->zoom = json_encode(['enabled' => true]);
@@ -137,12 +138,6 @@ class LarapexChart
     public function setLabels(array $labels): static
     {
         $this->labels = $labels;
-        return $this;
-    }
-
-    public function setXAxis(array $categories): static
-    {
-        $this->xAxis = json_encode($categories);
         return $this;
     }
 
@@ -232,6 +227,13 @@ class LarapexChart
     public function setGridOption(GridOption $gridOption): static
     {
         $this->gridOption = $gridOption;
+
+        return $this;
+    }
+
+    public function setXAxisOption(XAxisOption $XAxisOption): static
+    {
+        $this->xAxisOption = $XAxisOption;
 
         return $this;
     }
@@ -343,9 +345,6 @@ class LarapexChart
                 'text' => $this->subtitle,
                 'align' => $this->subtitlePosition,
             ],
-            'xaxis' => [
-                'categories' => json_decode($this->xAxis),
-            ],
             'markers' => json_decode($this->markers),
             'legend' => [
                 'show' => ($this->showLegend ? 'true' : 'false'),
@@ -358,6 +357,10 @@ class LarapexChart
 
         if ($this->stroke !== '') {
             $options['stroke'] = json_decode($this->stroke);
+        }
+
+        if ($this->xAxisOption !== null && $this->xAxisOption->toArray() !== []) {
+            $options['xaxis'] = $this->xAxisOption->toArray();
         }
 
         if ($this->yAxisOption !== null && $this->yAxisOption->toArray() !== []) {
