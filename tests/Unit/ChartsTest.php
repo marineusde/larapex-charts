@@ -4,6 +4,7 @@ namespace marineusde\LarapexCharts\Tests\Unit;
 
 use Illuminate\Support\Facades\Artisan;
 use marineusde\LarapexCharts\LarapexChart;
+use marineusde\LarapexCharts\Options\XAxisOption;
 use marineusde\LarapexCharts\Tests\TestCase;
 
 class ChartsTest extends TestCase
@@ -46,7 +47,7 @@ class ChartsTest extends TestCase
     {
         $chart = (new LarapexChart)
             ->setTitle('Posts')
-            ->setXAxis(['Jan', 'Feb', 'Mar'])
+            ->setXAxisOption(new XAxisOption(['Jan', 'Feb', 'Mar']))
             ->setDataset([150, 120])
             ->setLabels([__('Published'), __('No Published')]);
 
@@ -56,7 +57,9 @@ class ChartsTest extends TestCase
     /** @test */
     public function it_tests_larapex_charts_can_change_default_config_colors(): void
     {
-        $chart = (new LarapexChart)->setTitle('Posts')->setXAxis(['Jan', 'Feb', 'Mar'])->setDataset([150, 120]);
+        $chart = (new LarapexChart)->setTitle('Posts')
+            ->setXAxisOption(new XAxisOption(['Jan', 'Feb', 'Mar']))
+            ->setDataset([150, 120]);
         $oldColors = $chart->colors;
         $chart->setColors(['#fe9700', '#607c8a']);
         $this->assertNotEquals($oldColors, $chart->colors);
