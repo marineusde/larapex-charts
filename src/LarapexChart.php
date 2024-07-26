@@ -229,7 +229,7 @@ class LarapexChart
         return $this;
     }
 
-    public function setGridOptions(GridOption $gridOption): static
+    public function setGridOption(GridOption $gridOption): static
     {
         $this->gridOption = $gridOption;
 

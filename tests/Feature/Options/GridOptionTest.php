@@ -22,7 +22,7 @@ class GridOptionTest extends TestCase
             ->setColumnColors(new Colors(['orange', 'black'], 0.7));
 
         $chart = (new BarChart)
-            ->setGridOptions($gridOption);
+            ->setGridOption($gridOption);
 
         $options = $chart->getDefaultOptions();
 
@@ -74,7 +74,7 @@ class GridOptionTest extends TestCase
             ->setShowAxis(false, false);
 
         $chart = (new BarChart)
-            ->setGridOptions($gridOption);
+            ->setGridOption($gridOption);
 
         $options = $chart->getDefaultOptions();
         $this->assertNotNull($options['grid']);
