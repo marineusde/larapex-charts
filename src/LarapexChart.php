@@ -5,6 +5,7 @@ namespace marineusde\LarapexCharts;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use marineusde\LarapexCharts\Options\ChartAnimationOption;
+use marineusde\LarapexCharts\Options\GridOption;
 use marineusde\LarapexCharts\Options\YAxisOption;
 
 class LarapexChart
@@ -34,7 +35,6 @@ class LarapexChart
     public string $colors;
     public string $horizontal;
     public string $xAxis;
-    public string $grid;
     public string $markers;
     public bool $stacked = false;
     public bool $showLegend = true;
@@ -48,6 +48,7 @@ class LarapexChart
 
     public ?YAxisOption $yAxisOption = null;
     public ?ChartAnimationOption $chartAnimationOption = null;
+    protected ?GridOption $gridOption = null;
 
     public array $additionalOptions = [];
 
@@ -63,7 +64,6 @@ class LarapexChart
         $this->horizontal = json_encode(['horizontal' => false]);
         $this->colors = json_encode(config('larapex-charts.colors'));
         $this->setXAxis([]);
-        $this->grid = json_encode(['show' => false]);
         $this->markers = json_encode(['show' => false]);
         $this->toolbar = json_encode(['show' => false]);
         $this->zoom = json_encode(['enabled' => true]);
@@ -143,19 +143,6 @@ class LarapexChart
     public function setXAxis(array $categories): static
     {
         $this->xAxis = json_encode($categories);
-        return $this;
-    }
-
-    public function setGrid(string $color = '#e5e5e5', float $opacity = 0.1): static
-    {
-        $this->grid = json_encode([
-            'show' => true,
-            'row' => [
-                'colors' => [$color, 'transparent'],
-                'opacity' => $opacity,
-            ],
-        ]);
-
         return $this;
     }
 
@@ -239,6 +226,13 @@ class LarapexChart
     public function setYAxisOption(YAxisOption $YAxisOption): static
     {
         $this->yAxisOption = $YAxisOption;
+        return $this;
+    }
+
+    public function setGridOptions(GridOption $gridOption): static
+    {
+        $this->gridOption = $gridOption;
+
         return $this;
     }
 
@@ -352,7 +346,6 @@ class LarapexChart
             'xaxis' => [
                 'categories' => json_decode($this->xAxis),
             ],
-            'grid' => json_decode($this->grid),
             'markers' => json_decode($this->markers),
             'legend' => [
                 'show' => ($this->showLegend ? 'true' : 'false'),
@@ -373,6 +366,10 @@ class LarapexChart
 
         if ($this->chartAnimationOption !== null) {
             $options['chart']['animations'] = $this->chartAnimationOption->toArray();
+        }
+
+        if ($this->gridOption !== null && $this->gridOption->toArray() !== []) {
+            $options['grid'] = $this->gridOption->toArray();
         }
 
         return $options;

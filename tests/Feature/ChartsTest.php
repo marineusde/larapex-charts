@@ -95,7 +95,6 @@ class ChartsTest extends TestCase
                 ]
             ])
             ->setHeight(250)
-            ->setGrid('#F0F0F0')
             ->setStroke(1);
 
         $this->assertEquals($chart->id, $chart->container()['id']);
