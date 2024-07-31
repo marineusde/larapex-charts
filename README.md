@@ -8,7 +8,9 @@ A Laravel wrapper for apex charts library.
 
 ## Why should I use a fork?
 
-The maintainer of the original package is not really active. To many developers are waiting for a new release. I will try to keep this package up to date.
+- The maintainer of the original package is not really active. To many developers are waiting for a new release. I will try to keep this package up to date.
+- Using phpstan and cs-fixer for better code
+- I added more options for xaxis, yaxis, grid options chart animations with real classes and not just arrays
 
 ## Installation
 
@@ -66,15 +68,17 @@ Then in your view (Blade file) add:
  </html>
 ```
 
+The $chart must be an object of LarapexChart, not the controller or class that create it.
+
 ### More complex example
 
 ```php
 $chart = (new AreaChart)
         ->setTitle('Total Users Monthly')
         ->setSubtitle('From January to March')
-        ->setXAxis([
+        ->setXAxisOptions(new XAxisOption([
             'Jan', 'Feb', 'Mar'
-        ])
+        ]))
         ->setDataset([
             [
                 'name'  =>  'Active Users',
