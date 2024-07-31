@@ -89,6 +89,36 @@ $chart = (new AreaChart)
 
 You can create a variety of charts including: Line, Area, Bar, Horizontal Bar, Heatmap, pie, donut and Radialbar.
 
+### Better using with vite
+Its better to use vite (or other plugins of this kind) for your projects, cause you cant get problems with version conflicts of apex charts:
+
+- install npm
+- install vite and vite-plugin-static-copy with npm
+- copy the code in the vite.config.js
+```
+import {defineConfig, normalizePath} from 'vite';
+import { viteStaticCopy } from "vite-plugin-static-copy";
+
+export default defineConfig({
+    plugins: [
+        viteStaticCopy({
+            targets: [
+                {
+                    src: 'node_modules/apexcharts/dist/apexcharts.js',
+                    dest: 'js'
+                }
+            ]
+        })
+    ]
+});
+```
+run: npm run build
+
+now you can use the js file in your blade files:
+```
+<script src="{{ asset('build/js/apexcharts.js') }}"></script>
+```
+
 ## Contributing
 
 The author is Henning Zimmermann.
