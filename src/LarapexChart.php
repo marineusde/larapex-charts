@@ -46,6 +46,7 @@ class LarapexChart
     public string $theme = 'light';
     public string $sparkline;
     public string $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
+    public string $dropShadow = '';
 
     public ?XAxisOption $xAxisOption = null;
     public ?YAxisOption $yAxisOption = null;
@@ -238,6 +239,21 @@ class LarapexChart
         return $this;
     }
 
+    public function setDropShadow(bool $enabled = true, string|array $color = '#000', int $top = 10, int $left = 5, int $blur = 3, float $opacity = 0.2, ?array $enabledOnSeries = []): static
+    {
+        $this->dropShadow = json_encode([
+            'enabled' => $enabled,
+            'enabledOnSeries' => $enabledOnSeries,
+            'top' => $top,
+            'left' => $left,
+            'blur' => $blur,
+            'color' => is_array($color) ? $color : [$color],
+            'opacity' => $opacity,
+        ]);
+
+        return $this;
+    }
+
     public function setAdditionalOptions(array $options): static
     {
         $this->additionalOptions = $options;
@@ -373,6 +389,10 @@ class LarapexChart
 
         if ($this->gridOption !== null && $this->gridOption->toArray() !== []) {
             $options['grid'] = $this->gridOption->toArray();
+        }
+
+        if ($this->dropShadow !== '') {
+            $options['chart']['dropShadow'] = json_decode($this->dropShadow);
         }
 
         return $options;
