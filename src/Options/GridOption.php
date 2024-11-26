@@ -86,15 +86,15 @@ class GridOption implements Arrayable
     public function toArray(): array
     {
         $data = [
-            'show' => $this->show ? 'true' : 'false',
+            'show' => $this->show ? true : false,
             'xaxis' => [
                 'lines' => [
-                    'show' => $this->showXAxis ? 'true' : 'false'
+                    'show' => $this->showXAxis ? true : false
                 ]
             ],
             'yaxis' => [
                 'lines' => [
-                    'show' => $this->showYAxis ? 'true' : 'false'
+                    'show' => $this->showYAxis ? true : false
                 ]
             ]
         ];
