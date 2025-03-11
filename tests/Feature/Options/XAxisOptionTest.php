@@ -11,7 +11,7 @@ class XAxisOptionTest extends TestCase
     public function test_set_x_axis(): void
     {
         $chart = (new BarChart)
-            ->setXAxisOption(new XAxisOption(['test'], true));
+            ->setXAxisOption(new XAxisOption(['test']));
 
         $options = $chart->getDefaultOptions();
         $this->assertNotNull($options['xaxis']);
