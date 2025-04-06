@@ -30,15 +30,15 @@ class GridOptionTest extends TestCase
         $this->assertIsArray($options['grid']);
 
         $this->assertSame([
-            'show' => 'true',
+            'show' => true,
             'xaxis' => [
                 'lines' => [
-                    'show' => 'true'
+                    'show' => true
                 ]
             ],
             'yaxis' => [
                 'lines' => [
-                    'show' => 'true'
+                    'show' => true
                 ]
             ],
             'strokeDashArray' => 1,
@@ -81,15 +81,15 @@ class GridOptionTest extends TestCase
         $this->assertIsArray($options['grid']);
 
         $this->assertSame([
-            'show' => 'false',
+            'show' => false,
             'xaxis' => [
                 'lines' => [
-                    'show' => 'false'
+                    'show' => false
                 ]
             ],
             'yaxis' => [
                 'lines' => [
-                    'show' => 'false'
+                    'show' => false
                 ]
             ]
         ], $options['grid']);
