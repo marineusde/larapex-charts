@@ -17,15 +17,15 @@
     ],
     "require": {
         "php": "^8.2",
-        "illuminate/support": "^11.44|^v12.7",
+        "illuminate/support": "^v12.7|^13.0",
         "ext-json": "*"
     },
     "require-dev": {
-        "orchestra/testbench": "^10.2",
-        "phpunit/phpunit": "^11.5",
-        "nunomaduro/collision": "^8.7",
-        "laravel/pint": "^1.21",
-        "larastan/larastan": "^3.3"
+        "orchestra/testbench": "^v11.1",
+        "phpunit/phpunit": "^13.2",
+        "nunomaduro/collision": "^8.9",
+        "laravel/pint": "^1.29",
+        "larastan/larastan": "^3.10"
     },
     "autoload": {
         "psr-4": {
